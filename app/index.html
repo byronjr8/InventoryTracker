@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invo Track</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-center">
+            <a  href="index.html" class="logo">
+                <img src="images/logo.png" alt="">
+                <p>Inventry Tracking System</p>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-link">
+                    <a href="index.html">Orders</a>
+                </li>
+                <li class="nav-link"> 
+                    <a href="products.html">Product Inventory</a>
+                </li>
+                <li class="nav-link">
+                    <a href="manufacturers.html">Manufacturers</a>
+                </li>
+            </ul>
+            <!-- <button type="button" class="btn" disabled="true">Add manufacturers</button> -->
+            <div class="profile-image">BN</div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="content-center">
+            <section class="filter-section">
+                <div class="form-field">
+                    <input class="search-input" type="text" placeholder="search name">
+                </div>
+                <button type="button" class="btn create-order-modal-btn">Add Order</button>
+            </section>
+            <div class="table orders">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quatity</th>
+                            <th>Status</th>
+                            <th>Total Price</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>   
+                    </thead>
+                   <tbody></tbody>
+        
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <footer class="footer">
+        <div class="footer-center">
+            <hr>
+            <p>By Byron</p>
+        </div>
+    </footer>
+    <div class="page-loading">
+        <h2>Loading...</h2>
+    </div>
+    <div class="modal create-order-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="create-order-form">
+            <div class="modal-center">
+                
+            </div>
+        </form>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

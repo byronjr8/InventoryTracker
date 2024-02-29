@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invo Track ~ Product Inventory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-center">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="">
+                <p>Inventry Tracking System</p>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-link">
+                    <a href="index.html">Orders</a>
+                </li>
+                <li class="nav-link">
+                    <a href="products.html">Product Inventory</a>
+                </li>
+                <li class="nav-link">
+                    <a href="manufacturers.html">Manufacturers</a>
+                </li>
+            </ul>
+            <!-- <button type="button" class="btn">Add manufacturers</button> -->
+            <div class="profile-image">BN</div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="content-center">
+
+            <h1 class="title">Product Inventory</h1>
+            <section class="filter-section">
+                <div class="form-field">
+                    <input type="text">
+                </div>
+                <button type="button" class="btn add-product-modal-btn">Add Product</button>
+            </section>
+            <div class="table inventory">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category/Type</th>
+                            <th>Status</th>
+                            <th>Restock</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apple</td>
+                            <td>Accessories</td>
+                            <td>In Stock</td>
+                            <td>Restock</td>
+                            <td>£4,500.00</td>
+                            <td>3</td>
+                            <td><button type="button" class="btn edit-btn">Edit</button></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-center">
+            <hr>
+            <p>By Byron</p>
+        </div>
+    </footer>
+    <div class="page-loading">
+        <h2>Loading...</h2>
+    </div>
+
+    <div class="modal edit-product-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="edit-product-form">
+            <div class="modal-center">
+                
+            </div>
+        </form>
+    </div>
+  
+    <div class="modal add-product-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="add-product-form">
+            <div class="modal-center" >
+                
+            </div>
+        </form>
+    </div>
+    <script type="module" src="./src/pages/products.js"></script>
+</body>
+</html>
