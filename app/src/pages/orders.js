@@ -5,29 +5,30 @@ const createOrderModalBtn = getElement(".create-order-modal-btn");
 const init = async () => {
   const loading = getElement(".page-loading");
   let orders = await fetchOrders();
-  orders=[
-    {
-      name:"Apple Watch",
-      quantity:"100",
-      status:"Arrived",
-      price:"$4,232.00",
-      date:"7/12/2001",
-    },
-    {
-      name:"Apple Watch",
-      quantity:"100",
-      status:"Arrived",
-      price:"$4,232.00",
-      date:"7/12/2001",
-    },
-    {
-      name:"Apple Watch",
-      quantity:"100",
-      status:"Arrived",
-      price:"$4,232.00",
-      date:"7/12/2001",
-    }
-  ]
+  // orders=[
+  //   {
+  //     name:"Apple Watch",
+  //     quantity:"100",
+  //     status:"Arrived",
+  //     price:"$4,232.00",
+  //     date:"7/12/2001",
+  //   },
+  //   {
+  //     name:"Apple Watch",
+  //     quantity:"100",
+  //     status:"Arrived",
+  //     price:"$4,232.00",
+  //     date:"7/12/2001",
+  //   },
+  //   {
+  //     name:"Apple Watch",
+  //     quantity:"100",
+  //     status:"Arrived",
+  //     price:"$4,232.00",
+  //     date:"7/12/2001",
+  //   }
+  // ]
+  console.log(orders);
   if (orders) {
     displayOrders(orders, getElement(".orders table tbody"));
   } else {
