@@ -1,4 +1,4 @@
-// import { fetchProducts } from "../services/ProductsService.js";
+import { fetchProducts } from "../services/productsService.js";
 import { setupAddProductModal } from "../setups/productSetup.js";
 import { getElement, openModal } from "../utils.js";
 
@@ -6,10 +6,10 @@ const addProductModalBtn = getElement(".add-product-modal-btn");
 
 const init = async () => {
   const loading = getElement(".page-loading");
-  // const Products= await fetchProducts();
-  // if(Products) {
-  //     displayProducts(Products, getElement('.Products'));
-  // }
+  const Products= await fetchProducts();
+  if(Products) {
+      displayProducts(Products, getElement('.inventory.table table tbody'));
+  }
   addProductModalBtn.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("button click");
@@ -32,22 +32,34 @@ const displayProducts = (Products, element, filters) => {
 };
 
 const renderProductDataInTheTable = (data, element) => {
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     let newRow = document.createElement("tr");
-    Object.values(item).forEach((value) => {
-      let cell = document.createElement("td");
-      cell.innerText = value;
-      newRow.appendChild(cell);
-      if (Object.values(item).length == index + 1) {
-        let editbutton = `<button class="btn edit-product-btn" data-id="${item.id}">
-                Edit</i>
-              </button>`;
-        let celledit = document.createElement("td");
-        celledit.innerHTML = editbutton;
-        newRow.appendChild(celledit);
-      }
-    });
-    element.appendChild(newRow);
+
+    let s_noCell = document.createElement("td");
+    s_noCell.innerText = index +1;
+    newRow.appendChild(cell);
+
+    let quantityCell = document.createElement("td");
+    quantityCell.innerText = item.quantity
+    newRow.appendChild(cell);
+
+    let totalPriceCell = document.createElement("td");
+    totalPriceCell.innerText = item.totalPrice;
+    newRow.appendChild(cell);
+
+    let dateCell = document.createElement("td");
+    dateCell.innerText = item.date;
+    newRow.appendChild(cell);
+
+    let editbutton = `<button class="btn edit-product-btn" data-id="${item.id}">
+    Edit</i>
+  </button>`;
+    let celledit = document.createElement("td");
+    celledit.innerHTML = editbutton;
+    newRow.appendChild(celledit);
+    
+    element.appendChild(newRow); 
+
   });
 };
 

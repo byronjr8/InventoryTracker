@@ -17,9 +17,9 @@ const fetchOrder = async (orderId) => {
   return response;
 };
 const createOrder = async (orderData) => {
-  const response = await fetch(`${baseUrl}order`, {
+  const response = await fetch(`${baseUrl}orders`, {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(orderData),
@@ -30,9 +30,9 @@ const createOrder = async (orderData) => {
   return response;
 };
 const updateOrder = async (orderData) => {
-  const response = await fetch(`${baseUrl}order`, {
+  const response = await fetch(`${baseUrl}orders`, {
     method: "PUT",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(orderData),
@@ -44,7 +44,7 @@ const updateOrder = async (orderData) => {
 };
 
 const deleteOrder = async (orderId) => {
-  const response = await fetch(`${baseUrl}order/${orderId}`, {
+  const response = await fetch(`${baseUrl}orders/${orderId}`, {
     method: "DELETE",
   }).catch((err) => alert(err));
   if (response) {

@@ -1,80 +1,84 @@
-import { deleteOrder, fetchOrders, updateOrder } from "../services/ordersService.js";
+import {
+  deleteOrder,
+  fetchOrders,
+  updateOrder,
+} from "../services/ordersService.js";
 import { getElement, openModal } from "../utils.js";
-import {setupAddOrderModal} from "../setups/orderSetup.js"
+import { setupAddOrderModal } from "../setups/orderSetup.js";
+import { fetchProducts } from "../services/productsService.js";
+
 const createOrderModalBtn = getElement(".create-order-modal-btn");
 const init = async () => {
   const loading = getElement(".page-loading");
   let orders = await fetchOrders();
-  // orders=[
-  //   {
-  //     name:"Apple Watch",
-  //     quantity:"100",
-  //     status:"Arrived",
-  //     price:"$4,232.00",
-  //     date:"7/12/2001",
-  //   },
-  //   {
-  //     name:"Apple Watch",
-  //     quantity:"100",
-  //     status:"Arrived",
-  //     price:"$4,232.00",
-  //     date:"7/12/2001",
-  //   },
-  //   {
-  //     name:"Apple Watch",
-  //     quantity:"100",
-  //     status:"Arrived",
-  //     price:"$4,232.00",
-  //     date:"7/12/2001",
-  //   }
-  // ]
-  console.log(orders);
   if (orders) {
     displayOrders(orders, getElement(".orders table tbody"));
   } else {
-    //displayOrders([], getElement('.orders'));
   }
-  createOrderModalBtn.addEventListener("click", (e) => {
+  createOrderModalBtn.addEventListener("click", async(e) => {
     e.preventDefault();
-    
-    setupAddOrderModal(getElement('.modal.create-order-modal .modal-center'))
+    const products = await fetchProducts();
+    setupAddOrderModal(getElement(".modal.create-order-modal .modal-center"), products);
     openModal(getElement(".modal.create-order-modal"));
   });
 
   loading.style.display = "none";
 };
 
-const displayOrders = (orders, element, filters) => {
+const displayOrders =  (orders, element, filters) => {
   console.log("displaying..");
   renderOrderDataInTheTable(orders, element);
 
-    element.addEventListener("click", function (e) {
-      const target = e.target;
-      if (target.classList.contains("remove-order-btn")) {
-        console.log(target.dataset.id, "delete")
-        deleteOrder(target.dataset.id);
+  element.addEventListener("click", async function (e) {
+    const target = e.target;
+    if (target.classList.contains("remove-order-btn")) {
+      console.log(target.dataset.id, "delete");
+      let deleteResponse= await deleteOrder(target.dataset.id);
+      console.log(deleteResponse);
+      if(deleteResponse){
+        alert(deleteResponse.message);
+        location.reload();
       }
-    });
+    }
+  });
 };
 
 const renderOrderDataInTheTable = (data, element) => {
-  element.innerHTML=""
-  data.forEach((item) => {
+  element.innerHTML = "";
+  data.forEach((item, index) => {
     let newRow = document.createElement("tr");
-    Object.values(item).forEach((value, index) => {
-      let cell = document.createElement("td");
-      cell.innerText = value;
-      newRow.appendChild(cell);
-      if (Object.values(item).length == index + 1) {
-        let editbutton = `<button class="btn remove-order-btn" data-id="${item.id}">
+
+    let s_noCell = document.createElement("td");
+    s_noCell.innerText = index + 1;
+    newRow.appendChild(s_noCell);
+
+    let productCell = document.createElement("td");
+    productCell.innerText = item.productName;
+    newRow.appendChild(productCell);
+
+    let quantityCell = document.createElement("td");
+    quantityCell.innerText = item.quantity;
+    newRow.appendChild(quantityCell);
+
+    let statusCell = document.createElement("td");
+    statusCell.innerText = item.status;
+    newRow.appendChild(statusCell);
+
+    let totalPriceCell = document.createElement("td");
+    totalPriceCell.innerText = item.totalPrice;
+    newRow.appendChild(totalPriceCell);
+
+    let dateCell = document.createElement("td");
+    dateCell.innerText = item.orderDate;
+    newRow.appendChild(dateCell);
+
+    let removebutton = `<button class="btn remove-order-btn" data-id="${item.id}">
             Remove</i>
           </button>`;
-        let celledit = document.createElement("td");
-        celledit.innerHTML = editbutton;
-        newRow.appendChild(celledit);
+    let celledit = document.createElement("td");
+    celledit.innerHTML = removebutton;
+    newRow.appendChild(celledit);
 
-      }
-    });
     element.appendChild(newRow);
   });
 };
