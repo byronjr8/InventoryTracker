@@ -1,14 +1,15 @@
 import { baseUrl } from "../endpoints.js";
 
-const fetchProducts = async () => {
-  const response = await fetch(`${baseUrl}products`).catch((err) => alert(err));
+
+const fetchLocations = async () => {
+  const response = await fetch(`${baseUrl}locations`).catch((err) => alert(err));
   if (response) {
     return response.json();
   }
   return response;
 };
-const fetchProduct = async (productId) => {
-  const response = await fetch(`${baseUrl}products/${productId}`).catch((err) =>
+const fetchLocation = async (locationId) => {
+  const response = await fetch(`${baseUrl}locations/${locationId}`).catch((err) =>
     alert(err)
   );
   if (response) {
@@ -16,9 +17,9 @@ const fetchProduct = async (productId) => {
   }
   return response;
 };
-const createProduct = async (data) => {
+const createLocation = async (data) => {
   console.log(JSON.stringify(data))
-  const response = await fetch(`${baseUrl}products`, {
+  const response = await fetch(`${baseUrl}locations`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,8 +32,8 @@ const createProduct = async (data) => {
   }
   return response;
 };
-const updateProduct = async (productId, data) => {
-  const response = await fetch(`${baseUrl}products/${productId}`, {
+const updateLocation = async (locationId, data) => {
+  const response = await fetch(`${baseUrl}locations/${locationId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -45,8 +46,8 @@ const updateProduct = async (productId, data) => {
   return response;
 };
 
-const deleteProduct = async (productId) => {
-  const response = await fetch(`${baseUrl}products/${productId}`, {
+const deleteLocation = async (locationId) => {
+  const response = await fetch(`${baseUrl}locations/${locationId}`, {
     method: "DELETE",
   }).catch((err) => alert(err));
   if (response) {
@@ -55,4 +56,5 @@ const deleteProduct = async (productId) => {
   return response;
 };
 
-export  {fetchProducts, fetchProduct, createProduct, updateProduct, deleteProduct };
+export  {fetchLocations, fetchLocation, createLocation, updateLocation, deleteLocation };
+

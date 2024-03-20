@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invo Track ~ Manufacturers</title>
+    <title>Invo Track ~ Locations</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product.css">
 </head>
@@ -18,33 +18,33 @@
             </a>
             <ul class="nav-links">
                 <li class="nav-link">
-                    <a href="index.html">Orders</a>
+                    <a href="index.html">Inventory</a>
                 </li>
                 <li class="nav-link"> 
-                    <a href="products.html">Product Inventory</a>
+                    <a href="products.html">Products</a>
                 </li>
                 <li class="nav-link">
-                    <a href="manufacturers.html">Manufacturers</a>
+                    <a href="location.html">locations</a>
                 </li>
             </ul>
-            <button type="button" class="btn">Add manufacturers</button>
             <div class="profile-image">BN</div>
         </div>
     </nav>
     <div class="content">
         <div class="content-center">
 
-            <h1 class="title">Manufacturers</h1>
-            <div class="table manufacturers">
+            <h1 class="title">Locations</h1>
+            <section class="filter-section">
+                <button type="button" class="btn add-location-modal-btn">Add Location</button>
+            </section>
+            <div class="table location">
                 <table>
                     <thead>
                         <tr>
-                            <th>Manufacturer Name</th>
-                            <th>Location/City</th>
-                            <th>Address</th>
-                            <th>Contact Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
+                            <th>S/N</th>
+                            <th>Location Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +62,28 @@
     <div class="page-loading">
         <h2>Loading...</h2>
     </div>
-    <script type="module" src="./src/pages/manufacturers.js"></script>
+    <div class="modal edit-location-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="edit-location-form">
+            <div class="modal-center">
+                
+            </div>
+        </form>
+    </div>
+  
+    <div class="modal add-location-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="add-location-form">
+            <div class="modal-center" >
+                
+            </div>
+        </form>
+    </div>
+    <script type="module" src="./src/pages/location.js"></script>
 </body>
 
 </html>

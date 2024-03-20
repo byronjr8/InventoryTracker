@@ -1,5 +1,5 @@
-import { fetchProducts } from "../services/productsService.js";
-import { setupAddProductModal } from "../setups/productSetup.js";
+import { fetchProducts , fetchProduct} from "../services/productsService.js";
+import { setupAddProductModal , setupEditProductModal} from "../setups/productSetup.js";
 import { getElement, openModal } from "../utils.js";
 
 const addProductModalBtn = getElement(".add-product-modal-btn");
@@ -7,8 +7,9 @@ const addProductModalBtn = getElement(".add-product-modal-btn");
 const init = async () => {
   const loading = getElement(".page-loading");
   const Products= await fetchProducts();
+  console.log(Products)
   if(Products) {
-      displayProducts(Products, getElement('.inventory.table table tbody'));
+     await displayProducts(Products, getElement('.inventory.table table tbody'));
   }
   addProductModalBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -20,16 +21,20 @@ const init = async () => {
   loading.style.display = "none";
 };
 
-const displayProducts = (Products, element, filters) => {
+const displayProducts = async (Products, element) => {
   renderProductDataInTheTable(Products, element);
-  element.addEventListener("click", function (e) {
-    const parent = e.target.parentElement;
+  await element.addEventListener("click", async function (e) {
+    const parent = e.target;
     if (parent.classList.contains("edit-product-btn")) {
       //get a single product , populate
-      showEditModal(parent.dataset.id);
+      let product= await fetchProduct(parent.dataset.id);
+      
+      setupEditProductModal(product, getElement('.modal.edit-product-modal .modal-center'));
+      openModal(getElement(".modal.edit-product-modal"));
     }
   });
 };
+
 
 const renderProductDataInTheTable = (data, element) => {
   data.forEach((item, index) => {
@@ -37,19 +42,20 @@ const renderProductDataInTheTable = (data, element) => {
 
     let s_noCell = document.createElement("td");
     s_noCell.innerText = index +1;
-    newRow.appendChild(cell);
+    newRow.appendChild(s_noCell);
 
-    let quantityCell = document.createElement("td");
-    quantityCell.innerText = item.quantity
-    newRow.appendChild(cell);
+    let name = document.createElement("td");
+    name.innerText = item.name;
+    newRow.appendChild(name);
 
-    let totalPriceCell = document.createElement("td");
-    totalPriceCell.innerText = item.totalPrice;
-    newRow.appendChild(cell);
+    let categoryCell = document.createElement("td");
+    categoryCell.innerText = item.category
+    newRow.appendChild(categoryCell);
 
-    let dateCell = document.createElement("td");
-    dateCell.innerText = item.date;
-    newRow.appendChild(cell);
+
+    let priceCell = document.createElement("td");
+    priceCell.innerText = item.price;
+    newRow.appendChild(priceCell);
 
     let editbutton = `<button class="btn edit-product-btn" data-id="${item.id}">
     Edit</i>

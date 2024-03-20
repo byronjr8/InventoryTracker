@@ -17,34 +17,35 @@
             </a>
             <ul class="nav-links">
                 <li class="nav-link">
-                    <a href="index.html">Orders</a>
+                    <a href="index.html">Inventory</a>
                 </li>
                 <li class="nav-link"> 
-                    <a href="products.html">Product Inventory</a>
+                    <a href="products.html">Products</a>
                 </li>
                 <li class="nav-link">
-                    <a href="manufacturers.html">Manufacturers</a>
+                    <a href="location.html">Locations</a>
                 </li>
             </ul>
-            <!-- <button type="button" class="btn" disabled="true">Add manufacturers</button> -->
             <div class="profile-image">BN</div>
         </div>
     </nav>
     <div class="content">
         <div class="content-center">
             <section class="filter-section">
-                <button type="button" class="btn create-order-modal-btn">Add Order</button>
+                <button type="button" class="btn add-inventory-modal-btn">Add Inventory</button>
             </section>
-            <div class="table orders">
+            <div class="table inventory">
                 <table>
                     <thead>
                         <tr>
                             <th>S/N</th>
                             <th>Name</th>
                             <th>Quatity</th>
-                            <th>Status</th>
+                            <th>Restock</th>
+                            <th>Unit Price</th>
                             <th>Total Price</th>
-                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Date Updated</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
@@ -65,12 +66,23 @@
     <div class="page-loading">
         <h2>Loading...</h2>
     </div>
-    <div class="modal create-order-modal">
+    <div class="modal edit-inventory-modal">
         <div class="modal-head">
             <span class="close">&times</span>
         </div>
-        <form id="create-order-form">
+        <form id="edit-inventory-form">
             <div class="modal-center">
+                
+            </div>
+        </form>
+    </div>
+  
+    <div class="modal add-inventory-modal">
+        <div class="modal-head">
+            <span class="close">&times</span>
+        </div>
+        <form id="add-inventory-form">
+            <div class="modal-center" >
                 
             </div>
         </form>

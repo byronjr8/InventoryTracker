@@ -17,5 +17,5 @@
 // }
 // window.addEventListener('DOMContentLoaded', init);
 
-import './src/pages/orders.js'
+import './src/pages/inventory.js'
 console.log("test")
