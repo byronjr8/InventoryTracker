@@ -21,24 +21,33 @@ const closeModal=(element)=>{
 }
 
 
-// const renderDataInTheTable = (data, element) => {
-//   data.forEach((item) => {
-//     let newRow = document.createElement("tr");
-//     Object.values(item).forEach((value, index) => {
-//       let cell = document.createElement("td");
-//       cell.innerText = value;
-//       newRow.appendChild(cell);
-//       if (Object.values(item).length == index + 1) {
-//         let editbutton = `<button class="btn edit-order-btn" data-id="${item.id}">
-//             Edit</i>
-//           </button>`;
-//         let celledit = document.createElement("td");
-//         celledit.innerHTML = editbutton;
-//         newRow.appendChild(celledit);
-//       }
-//     });
-//     element.appendChild(newRow);
-//   });
-// };
+function customAlert(message) {
+  // Create a div element for the backdrop
+  const backdrop = document.createElement('div');
+  backdrop.classList.add('custom-alert-backdrop');
+  
+  // Create a div element for the modal
+  const modal = document.createElement('div');
+  modal.classList.add('custom-alert-modal');
 
-export { getElement, formatPrice , openModal, closeModal};
+  // Create a paragraph element for the message
+  const messageParagraph = document.createElement('p');
+  messageParagraph.textContent = message;
+  
+  // Create a close button
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'Close';
+  closeButton.addEventListener('click', () => {
+      location.reload();
+  });
+  
+  modal.appendChild(messageParagraph);
+  modal.appendChild(closeButton);
+  document.body.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
+
+// Example usage:
+// customAlert('Inventory added successfully.');
+
+export { getElement, formatPrice , openModal, closeModal, customAlert};

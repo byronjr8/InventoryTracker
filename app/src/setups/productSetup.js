@@ -1,4 +1,4 @@
-import { closeModal, getElement } from "../utils.js";
+import { closeModal, getElement, customAlert } from "../utils.js";
 import { createProduct, updateProduct } from "../services/productsService.js";
 const addProductForm = getElement("#add-product-form");
 const closeBtn = getElement(".add-product-modal .close");
@@ -47,10 +47,9 @@ async function addProduct() {
   };
   let newProduct = await createProduct(formdata);
   if (newProduct.id) {
-    alert("Product Created Successfully");
-    location.reload();
+    customAlert("Product Created Successfully");
   } else {
-    alert(newProduct.error);
+    customAlert(newProduct.error);
   }
 }
 
@@ -97,10 +96,9 @@ async function editProduct(productId) {
     };
     let newProduct = await updateProduct(productId, formdata);
     if (newProduct.message) {
-      alert(newProduct.message);
-      location.reload();
+      customAlert(newProduct.message);
     } else {
-      alert(newProduct.error);
+      customAlert(newProduct.error);
     }
   }
   

@@ -1,8 +1,9 @@
 import { baseUrl } from "../endpoints.js";
+import {customAlert} from "../utils.js";
 
 
 const fetchLocations = async () => {
-  const response = await fetch(`${baseUrl}locations`).catch((err) => alert(err));
+  const response = await fetch(`${baseUrl}locations`).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -10,7 +11,7 @@ const fetchLocations = async () => {
 };
 const fetchLocation = async (locationId) => {
   const response = await fetch(`${baseUrl}locations/${locationId}`).catch((err) =>
-    alert(err)
+    customAlert(err)
   );
   if (response) {
     return response.json();
@@ -25,7 +26,7 @@ const createLocation = async (data) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data)
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
   
     return response.json();
@@ -39,7 +40,7 @@ const updateLocation = async (locationId, data) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -49,7 +50,7 @@ const updateLocation = async (locationId, data) => {
 const deleteLocation = async (locationId) => {
   const response = await fetch(`${baseUrl}locations/${locationId}`, {
     method: "DELETE",
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }

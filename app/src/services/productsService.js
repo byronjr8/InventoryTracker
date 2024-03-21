@@ -1,7 +1,8 @@
 import { baseUrl } from "../endpoints.js";
+import {customAlert} from "../utils.js";
 
 const fetchProducts = async () => {
-  const response = await fetch(`${baseUrl}products`).catch((err) => alert(err));
+  const response = await fetch(`${baseUrl}products`).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -9,7 +10,7 @@ const fetchProducts = async () => {
 };
 const fetchProduct = async (productId) => {
   const response = await fetch(`${baseUrl}products/${productId}`).catch((err) =>
-    alert(err)
+    customAlert(err)
   );
   if (response) {
     return response.json();
@@ -24,7 +25,7 @@ const createProduct = async (data) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data)
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
   
     return response.json();
@@ -38,7 +39,7 @@ const updateProduct = async (productId, data) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -48,7 +49,7 @@ const updateProduct = async (productId, data) => {
 const deleteProduct = async (productId) => {
   const response = await fetch(`${baseUrl}products/${productId}`, {
     method: "DELETE",
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }

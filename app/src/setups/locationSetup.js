@@ -1,4 +1,4 @@
-import { closeModal, getElement } from "../utils.js";
+import { closeModal, getElement, customAlert } from "../utils.js";
 import {   createLocation, updateLocation} from "../services/locationService.js";
 const addLocationForm = getElement("#add-location-form");
 const closeBtn = getElement(".add-location-modal .close");
@@ -37,10 +37,9 @@ async function addLocation() {
   };
   let newLocation = await createLocation(formdata);
   if (newLocation.id) {
-    alert("Location Created Successfully");
-    location.reload();
+    customAlert("Location Created Successfully");
   } else {
-    alert(newLocation.error);
+    customAlert(newLocation.error);
   }
 }
 
@@ -77,10 +76,9 @@ async function editLocation(locationId) {
     };
     let newLocation = await updateLocation(locationId, formdata);
     if (newLocation.message) {
-      alert(newLocation.message);
-      location.reload();
+      customAlert(newLocation.message);
     } else {
-      alert(newLocation.error);
+      customAlert(newLocation.error);
     }
   }
   

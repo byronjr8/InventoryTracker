@@ -2,7 +2,7 @@ import { fetchInventorys , fetchInventory, deleteInventory} from "../services/in
 import { fetchLocations } from "../services/locationService.js";
 import { fetchProducts } from "../services/productsService.js";
 import { setupAddInventoryModal, setupEditInventoryModal } from "../setups/inventorySetup.js";
-import { getElement, openModal } from "../utils.js";
+import { getElement, openModal, customAlert } from "../utils.js";
 
 const addInventoryModalBtn = getElement(".add-inventory-modal-btn");
 
@@ -39,10 +39,9 @@ const displayInventorys = async (Inventorys, element) => {
       //get a single inventory , populate
       let isDeleted= await deleteInventory(parent.dataset.id);
       if (isDeleted.message) {
-        alert(isDeleted.message);
-        location.reload();
+        customAlert(isDeleted.message);
       } else {
-        alert(isDeleted.error);
+        customAlert(isDeleted.error);
       }
     }
   });

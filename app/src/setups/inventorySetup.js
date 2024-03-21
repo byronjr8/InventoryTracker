@@ -1,5 +1,5 @@
 import { createInventory , updateInventory} from "../services/inventoryService.js";
-import { getElement, closeModal } from "../utils.js";
+import { getElement, closeModal, customAlert } from "../utils.js";
 const createInventoryForm= getElement('#add-inventory-form');
 const closeAddInventoryBtn= getElement('.add-inventory-modal .close');
 
@@ -54,10 +54,9 @@ const setupAddInventoryModal = (products, locations, element) => {
     }
     let newInventory= await createInventory(formdata);
     if(newInventory.id){
-        alert("Inventory Added Successfully");
-        location.reload();
+        customAlert("Inventory Added Successfully");
     }else{
-        alert(newInventory.error);
+        customAlert(newInventory.error);
     }
   }
   const setupEditInventoryModal = (inventory, element) => {
@@ -96,10 +95,9 @@ const setupAddInventoryModal = (products, locations, element) => {
       };
       let newInventory = await updateInventory(inventoryId, formdata);
       if (newInventory.message) {
-        alert(newInventory.message);
-        location.reload();
+        customAlert(newInventory.message);
       } else {
-        alert(newInventory.error);
+        customAlert(newInventory.error);
       }
     }
     

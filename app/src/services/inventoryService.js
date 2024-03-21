@@ -1,7 +1,8 @@
+import {customAlert} from "../utils.js";
 import { baseUrl } from "../endpoints.js";
 
 const fetchInventorys = async () => {
-  const response = await fetch(`${baseUrl}inventory`).catch((err) => alert(err));
+  const response = await fetch(`${baseUrl}inventory`).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -9,7 +10,7 @@ const fetchInventorys = async () => {
 };
 const fetchInventory = async (inventoryId) => {
   const response = await fetch(`${baseUrl}inventory/${inventoryId}`).catch((err) =>
-    alert(err)
+    customAlert(err)
   );
   if (response) {
     return response.json();
@@ -23,7 +24,7 @@ const createInventory = async (inventoryData) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(inventoryData),
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -36,7 +37,7 @@ const updateInventory = async (inventoryId, inventoryData) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(inventoryData),
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
@@ -46,7 +47,7 @@ const updateInventory = async (inventoryId, inventoryData) => {
 const deleteInventory = async (inventoryId) => {
   const response = await fetch(`${baseUrl}inventory/${inventoryId}`, {
     method: "DELETE",
-  }).catch((err) => alert(err));
+  }).catch((err) => customAlert(err));
   if (response) {
     return response.json();
   }
