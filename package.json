@@ -4,7 +4,7 @@
   "description": "keep track of order and inventory",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "testcafe chromium Test/testCafe.js"
   },
   "author": "Byron",
   "license": "ISC",

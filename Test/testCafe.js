@@ -1,6 +1,7 @@
 import { Selector } from "testcafe";
+import { appBaseUrl } from "./test.enviroment.variables";
 
-fixture("Inventory").page("http://127.0.0.1:5500/app/index.html");
+fixture("Inventory").page(`${appBaseUrl}app/index.html`);
 
 test("inventory test", async (t) => {
   await t.click(Selector("nav").find("a").withText("Inventory"));
@@ -31,7 +32,7 @@ test("inventory test", async (t) => {
   await t.click(Selector(".custom-alert-modal button").withText("Close"));
 });
 
-fixture("Product").page("http://127.0.0.1:5500/app/products.html");
+fixture("Product").page(`${appBaseUrl}app/products.html`);
 
 test("Product page test", async (t) => {
   await t.click(Selector("nav").find("a").withText("Products"));
@@ -65,7 +66,7 @@ test("Product page test", async (t) => {
   await t.click(Selector(".custom-alert-modal button").withText("Close"));
 });
 
-fixture("Location").page("http://127.0.0.1:5500/app/location.html");
+fixture("Location").page(`${appBaseUrl}app/location.html`);
 
 test("Location page test", async (t) => {
   await t.click(Selector("nav").find("a").withText("Locations"));
