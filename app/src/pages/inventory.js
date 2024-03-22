@@ -87,9 +87,9 @@ const renderInventoryDataInTheTable = (data, element) => {
     newRow.appendChild(lastUpdated);
 
 
-    let actionButtons = `<button class="btn edit-inventory-btn" data-id="${item.id}">
+    let actionButtons = `<button class="btn primary-bg edit-inventory-btn" data-id="${item.id}">
     Edit</i>
-  </button> <button class="btn remove-inventory-btn" data-id="${item.id}">
+  </button> <button class="btn remove-inventory-btn danger-bg" data-id="${item.id}">
   Remove</i>
 </button>`;
 

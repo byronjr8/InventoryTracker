@@ -54,7 +54,7 @@ const renderLocationDataInTheTable = (data, element) => {
     descriptionCell.innerText = item.description;
     newRow.appendChild(descriptionCell);
 
-    let editbutton = `<button class="btn edit-location-btn" data-id="${item.id}">
+    let editbutton = `<button class="btn edit-location-btn primary-bg" data-id="${item.id}">
     Edit</i>
   </button>`;
     let celledit = document.createElement("td");

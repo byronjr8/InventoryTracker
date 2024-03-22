@@ -57,7 +57,7 @@ const renderProductDataInTheTable = (data, element) => {
     priceCell.innerText = item.price;
     newRow.appendChild(priceCell);
 
-    let editbutton = `<button class="btn edit-product-btn" data-id="${item.id}">
+    let editbutton = `<button class="btn edit-product-btn primary-bg" data-id="${item.id}">
     Edit</i>
   </button>`;
     let celledit = document.createElement("td");

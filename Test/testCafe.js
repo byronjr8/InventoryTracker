@@ -57,7 +57,7 @@ test("Product page test", async (t) => {
   await t.expect(Selector(".edit-product-modal.show").exists).ok();
   await t.typeText("#name", "test product edit", { replace: true });
   await t.typeText("#description", "item for test edit", { replace: true });
-  await t.typeText("#price", "201", { replace: true });
+  await t.typeText("#price", "201.99", { replace: true });
   await t.typeText("#category", "test eddit", { replace: true });
   await t.click(Selector(".edit-product-modal button").withText("EDIT"));
   await t

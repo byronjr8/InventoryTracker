@@ -284,3 +284,11 @@ footer {
 .custom-alert-modal button:hover {
     background-color: #0056b3;
 }
+
+.primary-bg{
+  background-color: #0056b3;
+}
+.danger-bg{
+  background-color: #e40404;
+}
+
